@@ -72,7 +72,7 @@ int main()
 
 		//
 
-		Vertex line[80];
+		Vertex line[30];
 		int sizeOfArr = sizeof(line) / sizeof(line[0]);
 
 		//Linear Bezier Curve
@@ -84,6 +84,7 @@ int main()
 		//{
 		//	double t = static_cast<float>(i) / sizeOfArr;
 		//	line[i] = linear(p0,p1,t);
+		// line[i].color = Color::Magenta;
 		//}
 
 		//Quadratic Bezier Curve
@@ -96,40 +97,43 @@ int main()
 		//{
 		//	double t = static_cast<float>(i) / sizeOfArr;
 		//	line[i] = quadratic(p0, p1, p2, t);
+		//	line[i].color = Color::Cyan;
 		//	
 		//}
 
 		//Cubic Bezier Curve
 
-		//Vector2f p0(0.f, 500.f);	//Anchor point
-		//Vector2f p1(Mouse::getPosition(window).x, Mouse::getPosition(window).y);	//Control point
-		//Vector2f p2(300.f, 1250.f);	//Control point
-		//Vector2f p3(1400.f, 500.f);	//Anchor point
-
-		//for (int i = 0; i < sizeOfArr; ++i)
-		//{
-		//	double t = static_cast<float>(i) / sizeOfArr;
-		//	line[i] = cubic(p0,p1,p2,p3,t);
-		//}
-
-		//Quartic Bezier Curve
-
-		Vector2f p0(30.f, 500.f);	//Anchor point
-		Vector2f p1(230.f, 700.f);	//Control point
-		Vector2f p2(600.f, -500.f);	//Control point
-		Vector2f p3(800.f, 900.f);	//Control point
-		Vector2f p4(Mouse::getPosition(window).x, 500.f);	//Anchor point
-		
+		Vector2f p0(0.f, 500.f);	//Anchor point
+		Vector2f p1(Mouse::getPosition(window).x, Mouse::getPosition(window).y);	//Control point
+		Vector2f p2(300.f, 1250.f);	//Control point
+		Vector2f p3(1400.f, 500.f);	//Anchor point
 
 		for (int i = 0; i < sizeOfArr; ++i)
 		{
 			double t = static_cast<float>(i) / sizeOfArr;
-			line[i] = quartic(p0, p1, p2, p3, p4, t);
+			line[i] = cubic(p0,p1,p2,p3,t);
+		  line[i].color = Color::Yellow;
 		}
+
+		//Quartic Bezier Curve
+
+		//Vector2f p0(30.f, 500.f);	//Anchor point
+		//Vector2f p1(230.f, 700.f);	//Control point
+		//Vector2f p2(600.f, -500.f);	//Control point
+		//Vector2f p3(800.f, 900.f);	//Control point
+		//Vector2f p4(Mouse::getPosition(window).x, Mouse::getPosition(window).y);	//Anchor point
+		//
+
+		//for (int i = 0; i < sizeOfArr; ++i)
+		//{
+		//	double t = static_cast<float>(i) / sizeOfArr;
+		//	line[i] = quartic(p0, p1, p2, p3, p4, t);
+		//	line[i].color = Color::Green;
+		//}
 
 		//
 
-		window.draw(line, sizeOfArr, Points);
+		window.draw(line, sizeOfArr, sf::LineStrip);
 
 		// Update the window
 		window.display();
