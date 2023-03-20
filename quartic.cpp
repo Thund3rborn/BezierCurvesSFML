@@ -61,7 +61,8 @@ int main()
 
 		//Quartic Bezier Curve
 
-		const int sizeOfArr = 60;
+		const int offset = 1;
+		const int sizeOfArr = 20 + offset;
 		Vertex line[sizeOfArr];
 
 		Vector2f p0(10.f, 500.f);					//control point (anchor point)
@@ -71,17 +72,19 @@ int main()
 		Vector2f p4(Mouse::getPosition(window));	//control point (anchor point)
 
 
-		for (int i = 0; i < sizeOfArr; ++i)
+		for (int i = 0; i < sizeOfArr - offset; ++i)
 		{
-			double t = static_cast<float>(i) / sizeOfArr;
+			double t = (float)i / (float)(sizeOfArr - offset);
 			line[i] = quartic(p0, p1, p2, p3, p4, t);
-			line[i].color = Color::Green;
+			line[i].color = Color::Cyan;
 		}
+		line[sizeOfArr - offset].position = p4;
+		line[sizeOfArr - offset].color = Color::Cyan;
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 
 		window.display();
 	}
-
+	
 	return EXIT_SUCCESS;
 }

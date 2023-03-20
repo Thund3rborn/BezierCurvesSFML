@@ -42,20 +42,23 @@ int main()
 		window.clear();
 
 		//Quadratic Bezier Curve
-		const int sizeOfArr = 3;
+
+		const int offset = 1;
+		const int sizeOfArr = 20 + offset;
 		Vertex line[sizeOfArr];
 
 		Vector2f p0(150.f, 150.f);							//control point (anchor point)
 		Vector2f p1(600.f, 900.f);							//control point
 		Vector2f p2(Mouse::getPosition(window));			//control point (anchor point)
 
-		for (int i = 0; i < sizeOfArr; ++i)
+		for (int i = 0; i < sizeOfArr - offset; ++i)
 		{
-			double t = (float)i / (float)sizeOfArr;
+			double t = (float)i / (float)(sizeOfArr - offset);
 			line[i] = quadratic(p0, p1, p2, t);
 			line[i].color = Color::Cyan;
 		}
-
+		line[sizeOfArr - offset].position = p2;
+		line[sizeOfArr - offset].color = Color::Cyan;
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 

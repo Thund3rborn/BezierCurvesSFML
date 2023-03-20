@@ -37,18 +37,21 @@ int main()
 
 		//Linear Bezier Curve
 
-		const int sizeOfArr = 60;
+		const int offset = 1;
+		const int sizeOfArr = 20 + offset;
 		Vertex line[sizeOfArr];
 
 		Vector2f p0(150.f, 150.f);					//control point (anchor point)
 		Vector2f p1(Mouse::getPosition(window));	//control point (anchor point)
 
-		for (int i = 0; i < sizeOfArr; i++)
+		for (int i = 0; i < sizeOfArr - offset; ++i)
 		{
-			double t = static_cast<float>(i) / sizeOfArr;
-			line[i] = linear(p0,p1,t);
-			line[i].color = Color::Magenta;
+			double t = (float)i / (float)(sizeOfArr - offset);
+			line[i] = linear(p0, p1, t);
+			line[i].color = Color::Cyan;
 		}
+		line[sizeOfArr - offset].position = p1;
+		line[sizeOfArr - offset].color = Color::Cyan;
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 
