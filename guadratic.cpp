@@ -42,9 +42,8 @@ int main()
 		window.clear();
 
 		//Quadratic Bezier Curve
-
-		Vertex line[60];
-		int sizeOfArr = sizeof(line) / sizeof(line[0]);
+		const int sizeOfArr = 3;
+		Vertex line[sizeOfArr];
 
 		Vector2f p0(150.f, 150.f);							//control point (anchor point)
 		Vector2f p1(600.f, 900.f);							//control point
@@ -52,10 +51,11 @@ int main()
 
 		for (int i = 0; i < sizeOfArr; ++i)
 		{
-			double t = static_cast<float>(i) / sizeOfArr;
+			double t = (float)i / (float)sizeOfArr;
 			line[i] = quadratic(p0, p1, p2, t);
 			line[i].color = Color::Cyan;
 		}
+
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 

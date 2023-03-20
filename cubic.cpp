@@ -52,8 +52,8 @@ int main()
 
 		//Cubic Bezier Curve
 
-		Vertex line[60];
-		int sizeOfArr = sizeof(line) / sizeof(line[0]);
+		const int sizeOfArr = 60;
+		Vertex line[sizeOfArr];
 
 		Vector2f p0(0.f, 500.f);					//control point (anchor point)
 		Vector2f p1(400, 50);						//control point

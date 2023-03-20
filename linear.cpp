@@ -37,8 +37,8 @@ int main()
 
 		//Linear Bezier Curve
 
-		Vertex line[60];
-		int sizeOfArr = sizeof(line) / sizeof(line[0]);
+		const int sizeOfArr = 60;
+		Vertex line[sizeOfArr];
 
 		Vector2f p0(150.f, 150.f);					//control point (anchor point)
 		Vector2f p1(Mouse::getPosition(window));	//control point (anchor point)

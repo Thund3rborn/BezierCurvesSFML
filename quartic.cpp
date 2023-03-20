@@ -61,8 +61,8 @@ int main()
 
 		//Quartic Bezier Curve
 
-		Vertex line[60];
-		int sizeOfArr = sizeof(line) / sizeof(line[0]);
+		const int sizeOfArr = 60;
+		Vertex line[sizeOfArr];
 
 		Vector2f p0(10.f, 500.f);					//control point (anchor point)
 		Vector2f p1(230.f, -500.f);					//control point
