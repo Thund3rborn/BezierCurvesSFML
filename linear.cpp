@@ -1,3 +1,8 @@
+
+// Author: Kacper Feister
+// Last update: 20/03/2023
+// Project: Linear Bezier Curve
+
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include <assert.h>
