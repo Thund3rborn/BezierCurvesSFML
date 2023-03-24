@@ -1,6 +1,6 @@
 
 // Author: Kacper Feister
-// Last update: 20/03/2023
+// Last update: 24/03/2023
 // Project: Cubic Bezier Curve
 
 #include "SFML/Graphics.hpp"
@@ -37,7 +37,7 @@ Vector2f cubic(Vector2f a, Vector2f b, Vector2f c, Vector2f d, float t)
 
 int main()
 {
-	RenderWindow window(VideoMode(1400, 1000), "Hello world!");
+	RenderWindow window(VideoMode(1400, 700), "Hello Bezier Curves!");
 
 	while (window.isOpen())
 	{
@@ -56,7 +56,7 @@ int main()
 		const int sizeOfArr = 20 + offset;
 		Vertex line[sizeOfArr];
 
-		Vector2f p0(0.f, 500.f);					//control point (anchor point)
+		Vector2f p0(10.f, 500.f);					//control point (anchor point)
 		Vector2f p1(400, 50);						//control point
 		Vector2f p2(600.f, 1250.f);					//control point
 		Vector2f p3(Mouse::getPosition(window));	//control point (anchor point)
@@ -65,10 +65,10 @@ int main()
 		{
 			double t = (float)i / (float)(sizeOfArr - offset);
 			line[i] = cubic(p0, p1, p2, p3, t);
-			line[i].color = Color::Cyan;
+			line[i].color = Color::Red;
 		}
 		line[sizeOfArr - offset].position = p3;
-		line[sizeOfArr - offset].color = Color::Cyan;
+		line[sizeOfArr - offset].color = Color::Red;
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 

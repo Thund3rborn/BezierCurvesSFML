@@ -1,6 +1,6 @@
 
 // Author: Kacper Feister
-// Last update: 20/03/2023
+// Last update: 24/03/2023
 // Project: Quartic Bezier Curve
 
 #include "SFML/Graphics.hpp"
@@ -46,7 +46,7 @@ Vector2f quartic(Vector2f a, Vector2f b, Vector2f c, Vector2f d, Vector2f e, flo
 
 int main()
 {
-	RenderWindow window(VideoMode(1400, 1000), "Hello world!");
+	RenderWindow window(VideoMode(1400, 700), "Hello Bezier Curves!");
 
 	while (window.isOpen())
 	{
@@ -76,10 +76,10 @@ int main()
 		{
 			double t = (float)i / (float)(sizeOfArr - offset);
 			line[i] = quartic(p0, p1, p2, p3, p4, t);
-			line[i].color = Color::Cyan;
+			line[i].color = Color::Red;
 		}
 		line[sizeOfArr - offset].position = p4;
-		line[sizeOfArr - offset].color = Color::Cyan;
+		line[sizeOfArr - offset].color = Color::Red;
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 

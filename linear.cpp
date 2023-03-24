@@ -1,6 +1,6 @@
 
 // Author: Kacper Feister
-// Last update: 20/03/2023
+// Last update: 24/03/2023
 // Project: Linear Bezier Curve
 
 #include "SFML/Graphics.hpp"
@@ -22,7 +22,7 @@ Vector2f linear(Vector2f a, Vector2f b, float t)
 
 int main()
 {
-	RenderWindow window(VideoMode(1400, 1000), "Hello world!");
+	RenderWindow window(VideoMode(1400, 700), "Hello Bezier Curves!");
 
 	while (window.isOpen())
 	{
@@ -41,17 +41,17 @@ int main()
 		const int sizeOfArr = 20 + offset;
 		Vertex line[sizeOfArr];
 
-		Vector2f p0(150.f, 150.f);					//control point (anchor point)
+		Vector2f p0(10.f, 500.f);					//control point (anchor point)
 		Vector2f p1(Mouse::getPosition(window));	//control point (anchor point)
 
 		for (int i = 0; i < sizeOfArr - offset; ++i)
 		{
 			double t = (float)i / (float)(sizeOfArr - offset);
 			line[i] = linear(p0, p1, t);
-			line[i].color = Color::Cyan;
+			line[i].color = Color::Red;
 		}
 		line[sizeOfArr - offset].position = p1;
-		line[sizeOfArr - offset].color = Color::Cyan;
+		line[sizeOfArr - offset].color = Color::Red;
 
 		window.draw(line, sizeOfArr, sf::LineStrip);
 
